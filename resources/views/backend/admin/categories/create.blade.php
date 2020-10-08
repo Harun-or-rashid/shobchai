@@ -6,11 +6,11 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="form-control-navbar badge badge-info">Add New Category</h5>
-                <form class="form-group" action="" method="post">
+                <form class="form-group category-create" id="category-create" name="category-create"  action="{{route('category.store')}}" method="post">
                     @csrf
                     <div class="col-md-5">
                         <label class="col-form-label" for="category-name">Category Name</label>
-                        <input class="form-control" type="text" name="category" id="">
+                        <input class="form-control" type="text" name="category" id="category">
                     </div>
                     <div class="col-md-5">
                         <label class="col-form-label" for="parent-name">Select Parent</label>
@@ -21,8 +21,8 @@
                         </select>
                     </div>
 
-{{--                    <button type="submit"></button>--}}
-                    <a class="btn btn-info form-row mt-3" type="submit">Create</a>
+                    <button class="btn btn-outline-info form-row mt-3" onclick="validateFm()" type="submit">Create</button>
+{{--                    <a class="btn btn-outline-info form-row mt-3" type="submit">Create</a>--}}
                 </form>
             </div>
         </div>
@@ -33,4 +33,23 @@
 
 
 
+
+<script>
+
+        function validateFm(){
+            $(".category-create").validate({
+                rules: {
+                    // simple rule, converted to {required:true}
+                    category: "required",
+// compound rule
+
+                },
+                messages:{
+                    category: "required"
+                }
+            });
+
+        }
+
+</script>
 @endsection
