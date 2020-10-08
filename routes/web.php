@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('backend.partial.index');
 });
+Route::group(['as'=>'category.','prefix'=>'category'],function (){
+    Route::get('/','CategoryController@index');
+    Route::get('create','CategoryController@create')->name('create');
+    Route::post('store','CategoryController@store')->name('store');
+    Route::get('edit','CategoryController@create')->name('edit');
+    Route::post('update','CategoryController@store')->name('update');
+});
+
