@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('backend.partial.index');
+    return view('welcome');
 });
 Route::group(['as'=>'category.','prefix'=>'category'],function (){
     Route::get('/','CategoryController@index');
