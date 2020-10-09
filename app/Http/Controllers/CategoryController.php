@@ -40,7 +40,7 @@ class CategoryController extends Controller
             'category'=>'required',
 
         ]);
-      if ($validation->fails()){
+      if (!$validation){
           return redirect()->back()->withInput()->withErrors($validation);
       }
         try {
@@ -48,17 +48,17 @@ class CategoryController extends Controller
               'category_name'=>$request->category,
               'parent_id'=>$request->parent
           ];
-          Category::create($data);
+
+           $save= Category::create($data);
           session()->flash('type','success');
           session()->flash('message','Category Added !');
           return redirect()->back();
 
         }catch (\Exception $error){
-            session()->flash('type','success');
-            session()->flash('message','Category Added !');
+            session()->flash('type','danger');
+            session()->flash('message','Oh no!Something went to wrong');
             return redirect()->back();
         }
-      dd($validation);
     }
 
     /**
