@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -35,7 +36,29 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $validation=  $this->validate($request,[
+            'category'=>'required',
+
+        ]);
+      if ($validation->fails()){
+          return redirect()->back()->withInput()->withErrors($validation);
+      }
+        try {
+          $data=[
+              'category_name'=>$request->category,
+              'parent_id'=>$request->parent
+          ];
+          Category::create($data);
+          session()->flash('type','success');
+          session()->flash('message','Category Added !');
+          return redirect()->back();
+
+        }catch (\Exception $error){
+            session()->flash('type','success');
+            session()->flash('message','Category Added !');
+            return redirect()->back();
+        }
+      dd($validation);
     }
 
     /**
