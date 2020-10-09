@@ -38,21 +38,21 @@
 
 <script>
 
-        // function validateFm(){
-        //     $(".category-create").validate({
-        //         rules: {
-        //             category: "required",
-        //             parent: "required",
-        //
-        //         },
-        //         messages:{
-        //             category: "required",
-        //             parent: "required",
-        //
-        //         }
-        //     });
-        //
-        // }
+        function validateFm(){
+            $(".category-create").validate({
+                rules: {
+                    category: "required",
+                    parent: "required",
+
+                },
+                messages:{
+                    category: "required",
+                    parent: "required",
+
+                }
+            });
+
+        }
 
 </script>
 @endsection

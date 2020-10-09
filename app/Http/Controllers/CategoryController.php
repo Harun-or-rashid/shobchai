@@ -80,7 +80,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories=Category::all();
+       $category=Category::where('id',$id)->first();
+//       dd($category);
+         return view('backend.admin.categories.edit',compact('category','categories'));
     }
 
     /**
