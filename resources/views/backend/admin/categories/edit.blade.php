@@ -19,12 +19,12 @@
                             <select class="form-control" name="parent" id="">
                                 <option value="">Select Any..</option>
                                 @foreach($categories as $data)
-                                <option value="">{{$data->category_name}}</option>
+                                <option value="{{$data->id}}">{{$data->category_name}}</option>
                                @endforeach
                             </select>
                         </div>
 
-                        <button class="btn btn-outline-info form-row mt-3" onclick="validateFm()" type="submit">Create</button>
+                        <button class="btn btn-outline-warning form-row mt-3" onclick="validateFm()" type="submit">Update</button>
                         {{--                    <a class="btn btn-outline-info form-row mt-3" type="submit">Create</a>--}}
                     </form>
                 </div>
@@ -43,12 +43,12 @@
             $(".category-create").validate({
                 rules: {
                     category: "required",
-                    parent: "required",
+                    // parent: "required",
 
                 },
                 messages:{
                     category: "required",
-                    parent: "required",
+                    // parent: "required",
 
                 }
             });

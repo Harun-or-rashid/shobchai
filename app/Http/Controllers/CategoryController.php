@@ -24,8 +24,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-
-        return view('backend.admin.categories.create');
+        $categories=Category::all();
+        return view('backend.admin.categories.create',compact('categories'));
     }
 
     /**
@@ -48,7 +48,7 @@ class CategoryController extends Controller
               'category_name'=>$request->category,
               'parent_id'=>$request->parent
           ];
-
+//dd($data);
            $save= Category::create($data);
           session()->flash('type','success');
           session()->flash('message','Category Added !');

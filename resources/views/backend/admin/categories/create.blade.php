@@ -18,8 +18,9 @@
                         <label class="col-form-label" for="parent-name">Select Parent</label>
                         <select class="form-control" name="parent" id="">
                             <option value="">Select Any..</option>
-                            <option value="1">A</option>
-                            <option value="2">B</option>
+                            @foreach($categories as $data)
+                                <option value="{{$data->id}}">{{$data->category_name}}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -42,12 +43,12 @@
             $(".category-create").validate({
                 rules: {
                     category: "required",
-                    parent: "required",
+                    // parent: "required",
 
                 },
                 messages:{
                     category: "required",
-                    parent: "required",
+                    // parent: "required",
 
                 }
             });
