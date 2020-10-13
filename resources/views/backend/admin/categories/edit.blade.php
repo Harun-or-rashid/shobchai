@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="form-control-navbar badge badge-info">Add New Category</h5>
-                    <form class="form-group category-create" id="category-create" name="category-create"  action="{{route('category.store')}}" method="post">
+                    <form class="form-group category-create" id="category-create" name="category-create"  action="{{route('category.update',$category->id)}}" method="post">
                         @include('backend.partial.session_messages')
                         @csrf
                         <div class="col-md-5">

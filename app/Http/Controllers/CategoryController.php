@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories=Category::all();
+
+        return view('backend.admin.categories.categories',compact('categories'));
     }
 
     /**
@@ -48,7 +50,7 @@ class CategoryController extends Controller
               'category_name'=>$request->category,
               'parent_id'=>$request->parent
           ];
-//dd($data);
+    //dd($data);
            $save= Category::create($data);
           session()->flash('type','success');
           session()->flash('message','Category Added !');
@@ -95,7 +97,30 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $validation = $this->validate($request, [
+            'category' => 'required',
+
+        ]);
+        if (!$validation) {
+            return redirect()->back()->withInput()->withErrors($validation);
+        }
+        try {
+            $save = Category::where('id',$id)->find($id);
+            $save->update([
+                'category_name' => $request->category,
+                'parent_id' => $request->parent
+            ]);
+
+            session()->flash('type', 'success');
+            session()->flash('message', 'Category Added !');
+            return redirect()->back();
+
+        } catch (\Exception $error) {
+            session()->flash('type', 'danger');
+            session()->flash('message', 'Oh no!Something went to wrong');
+            return redirect()->back();
+        }
     }
 
     /**
