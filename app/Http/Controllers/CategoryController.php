@@ -59,7 +59,7 @@ class CategoryController extends Controller
         }catch (\Exception $error){
             session()->flash('type','danger');
             session()->flash('message','Oh no!Something went to wrong');
-            return redirect()->back();
+            return $error;
         }
     }
 
