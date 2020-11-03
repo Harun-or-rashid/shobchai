@@ -11,13 +11,13 @@
                     @csrf
                     <div class="col-md-5">
                         <label class="col-form-label" for="category-name">Category Name</label>
-                        <input class="form-control" type="text" name="category" id="category">
-                            <span class="text-danger">{{ $errors->first('category') }}</span>
+                        <input class="form-control" type="text" name="category_name" id="category">
+                            <span class="text-danger">{{ $errors->first('category_name') }}</span>
                     </div>
                     <div class="col-md-5">
-                        <label class="col-form-label" for="parent-name">Select Parent</label>
+                        <label class="col-form-label" for="parent">Select Parent</label>
                         <select class="form-control" name="parent" id="">
-                            <option  value="">Select Any..</option>
+                            <option value="">Select Any..</option>
                             @foreach($categories as $data)
                                 <option value="{{$data->id}}">{{$data->category_name}}</option>
                             @endforeach

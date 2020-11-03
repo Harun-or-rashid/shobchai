@@ -39,19 +39,22 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
       $validation=  $this->validate($request,[
-            'category'=>'required',
+            'category_name'=>'required',
 
         ]);
+//      dd($validation);
       if (!$validation){
+//          dd('ki');
           return redirect()->back()->withInput()->withErrors($validation);
       }
         try {
-          $data=[
-              'category_name'=>$request->category,
-              'parent_id'=>$request->parent
-          ];
-    //dd($data);
-           $save= Category::create($data);
+//          $data=[
+//              'category_name'=>$request->category,
+//              'parent_id'=>$request->parent
+//          ];
+//    dd($data);
+           $save= Category::create($validation);
+//           dd($save);
           session()->flash('type','success');
           session()->flash('message','Category Added !');
           return redirect()->back();
@@ -99,7 +102,7 @@ class CategoryController extends Controller
     {
 
         $validation = $this->validate($request, [
-            'category' => 'required',
+            'category_name' => 'required',
 
         ]);
         if (!$validation) {
@@ -107,11 +110,11 @@ class CategoryController extends Controller
         }
         try {
             $save = Category::where('id',$id)->find($id);
-            $save->update([
-                'category_name' => $request->category,
-                'parent_id' => $request->parent
-            ]);
-
+            $save->category_name=$request->category_name;
+            $save->parent_id=$request->parent;
+//dd($request);
+            $update=    $save->update();
+//            dd($update);
             session()->flash('type', 'success');
             session()->flash('message', 'Category Added !');
             return redirect()->back();
@@ -119,7 +122,7 @@ class CategoryController extends Controller
         } catch (\Exception $error) {
             session()->flash('type', 'danger');
             session()->flash('message', 'Oh no!Something went to wrong');
-            return redirect()->back();
+            return $error;
         }
     }
 
