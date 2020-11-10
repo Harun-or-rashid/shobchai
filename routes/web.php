@@ -22,4 +22,12 @@ Route::group(['as'=>'category.','prefix'=>'category'],function (){
     Route::post('update/{id}','CategoryController@update')->name('update');
     Route::get('delete/{id}','CategoryController@destroy')->name('delete');
 });
+Route::group(['as'=>'gallery.','prefix'=>'gallery'],function (){
+    Route::get('/','GalleryController@index');
+    Route::get('create','GalleryController@create')->name('create');
+    Route::post('store','GalleryController@store')->name('store');
+    Route::get('edit/{id}','GalleryController@edit')->name('edit');
+    Route::post('update/{id}','GalleryController@update')->name('update');
+    Route::get('delete/{id}','GalleryController@destroy')->name('delete');
+});
 
