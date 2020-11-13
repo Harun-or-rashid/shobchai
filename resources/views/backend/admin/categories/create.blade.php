@@ -16,8 +16,8 @@
                     </div>
                     <div class="col-md-5">
                         <label class="col-form-label" for="parent">Select Parent</label>
-                        <select class="form-control" name="parent" id="">
-                            <option value="">Select Any..</option>
+                        <select class="form-control" name="parent_id" id="">
+                            <option value="0">Select Any..</option>
                             @foreach($categories as $data)
                                 <option value="{{$data->id}}">{{$data->category_name}}</option>
                             @endforeach

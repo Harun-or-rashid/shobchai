@@ -14,9 +14,17 @@
                         </tr>
 
                             @foreach($categories as $data)
-                            <tr>
+
+
+                                <tr>
+
                             <td>{{$data->category_name}}</td>
-                            <td>{{$data->parent_id}}</td>
+
+                                    <td>
+{{--                                    @foreach ($data->parent() as $parents)--}}
+                                       {{$data->parent->category_name}}
+{{--                                    @endforeach--}}
+                                    </td>
                                 <td>
                                     <a href="{{route('category.edit',$data->id)}}">
                                         <i class="fa fa-edit text-warning">Edit</i>

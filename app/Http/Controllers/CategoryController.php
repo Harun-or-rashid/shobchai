@@ -48,13 +48,13 @@ class CategoryController extends Controller
           return redirect()->back()->withInput()->withErrors($validation);
       }
         try {
-//          $data=[
-//              'category_name'=>$request->category,
-//              'parent_id'=>$request->parent
-//          ];
+          $data=[
+              'category_name'=>$request->category_name,
+              'parent_id'=>$request->parent_id
+          ];
 //    dd($data);
-           $save= Category::create($validation);
-//           dd($save);
+           $save= Category::create($data);
+           dd($save);
           session()->flash('type','success');
           session()->flash('message','Category Added !');
           return redirect()->back();

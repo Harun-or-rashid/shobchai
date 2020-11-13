@@ -7,7 +7,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                <h5 class="form-control-navbar badge badge-info">Add New Category</h5>
+                <h5 class="form-control-navbar badge badge-info">Upload Photo</h5>
                 <form class="form-group category-create" id="category-create" name="category-create"  action="{{route('category.store')}}" method="post">
                   @include('backend.partial.session_messages')
                     @csrf
@@ -23,8 +23,8 @@
                     </div>
                     <div class="col-md-5">
                         <label class="col-form-label" for="parent-name">Select Parent</label>
-                        <select class="form-control" name="parent" id="">
-                            <option value="">Select Any..</option>
+                        <select class="form-control" name="parent_id" id="">
+                            <option value="0">Select Any..</option>
 
                         </select>
                     </div>
