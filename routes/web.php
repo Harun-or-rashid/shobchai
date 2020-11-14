@@ -21,6 +21,24 @@ Route::group(['as'=>'category.','prefix'=>'category'],function (){
     Route::get('edit/{id}','CategoryController@edit')->name('edit');
     Route::post('update/{id}','CategoryController@update')->name('update');
     Route::get('delete/{id}','CategoryController@destroy')->name('delete');
+
+    Route::get('/','SubCategoryController@index');
+    Route::get('create','SubCategoryController@create')->name('create');
+    Route::post('store','SubCategoryController@store')->name('store');
+    Route::get('edit/{id}','SubCategoryController@edit')->name('edit');
+    Route::post('update/{id}','SubCategoryController@update')->name('update');
+    Route::get('delete/{id}','SubCategoryController@destroy')->name('delete');
+});
+
+Route::group(['as'=>'subcategory.','prefix'=>'subcategory'],function (){
+
+
+    Route::get('/','SubCategoryController@index');
+    Route::get('create','SubCategoryController@create')->name('create');
+    Route::post('store','SubCategoryController@store')->name('store');
+    Route::get('edit/{id}','SubCategoryController@edit')->name('edit');
+    Route::post('update/{id}','SubCategoryController@update')->name('update');
+    Route::get('delete/{id}','SubCategoryController@destroy')->name('delete');
 });
 Route::group(['as'=>'gallery.','prefix'=>'gallery'],function (){
     Route::get('/','GalleryController@index');

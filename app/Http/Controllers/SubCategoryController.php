@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\SubCategory;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class SubCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::all();
+        $categories=SubCategory::all();
 
-        return view('backend.admin.categories.subCategories.subCategories',compact('categories'));
+        return view('backend.admin.categories.categories',compact('categories'));
     }
 
     /**
@@ -27,7 +28,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories=Category::all();
-        return view('backend.admin.categories.subCategories.create',compact('categories'));
+        return view('backend.admin.categories.create',compact('categories'));
     }
 
     /**
@@ -38,26 +39,26 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-      $validation=  $this->validate($request,[
-            'category_name'=>'required',
+        $validation=  $this->validate($request,[
+            'subcategory_name'=>'subcategory_name',
 
         ]);
 //      dd($validation);
-      if (!$validation){
+        if (!$validation){
 //          dd('ki');
-          return redirect()->back()->withInput()->withErrors($validation);
-      }
+            return redirect()->back()->withInput()->withErrors($validation);
+        }
         try {
-          $data=[
-              'category_name'=>$request->category_name,
-              'parent_id'=>$request->parent_id
-          ];
+            $data=[
+                'subcategory_name'=>$request->subcategory_name,
+                'parent_id'=>$request->parent_id
+            ];
 //    dd($data);
-           $save= Category::create($data);
+            $save= SubCategory::create($data);
 //           dd($save);
-          session()->flash('type','success');
-          session()->flash('message','Category Added !');
-          return redirect()->back();
+            session()->flash('type','success');
+            session()->flash('message','Category Added !');
+            return redirect()->back();
 
         }catch (\Exception $error){
             session()->flash('type','danger');
@@ -85,10 +86,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $categories=SubCategory::all();
         $categories=Category::all();
-       $category=Category::where('id',$id)->first();
+        $category=SubCategory::where('id',$id)->first();
 //       dd($category);
-         return view('backend.admin.categories.subCategories.edit',compact('category','categories'));
+        return view('backend.admin.categories.edit',compact('category','categories'));
     }
 
     /**
@@ -109,8 +111,8 @@ class CategoryController extends Controller
             return redirect()->back()->withInput()->withErrors($validation);
         }
         try {
-            $save = Category::where('id',$id)->find($id);
-            $save->category_name=$request->category_name;
+            $save = SubCategory::where('id',$id)->find($id);
+            $save->subcategory_name=$request->subcategory_name;
             $save->parent_id=$request->parent;
 //dd($request);
             $update=    $save->update();
@@ -134,7 +136,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category=Category::where('id',$id)->find($id);
+        $category=SubCategory::where('id',$id)->find($id);
         $category->destroy($id);
         return redirect()->back();
     }
