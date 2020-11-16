@@ -14,15 +14,6 @@
                         <input class="form-control" type="text" name="category_name" id="category">
                             <span class="text-danger">{{ $errors->first('category_name') }}</span>
                     </div>
-                    <div class="col-md-5">
-                        <label class="col-form-label" for="parent">Select Parent</label>
-                        <select class="form-control" name="parent_id" id="">
-                            <option value="0">Select Any..</option>
-                            @foreach($categories as $data)
-                                <option value="{{$data->id}}">{{$data->category_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <button class="btn btn-outline-info form-row mt-3" onclick="validateFm()" type="submit">Create</button>
 {{--                    <a class="btn btn-outline-info form-row mt-3" type="submit">Create</a>--}}

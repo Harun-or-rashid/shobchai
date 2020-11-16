@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         $categories=Category::all();
 
-        return view('backend.admin.categories.subCategories.subCategories',compact('categories'));
+        return view('backend.admin.categories.categories',compact('categories'));
     }
 
     /**
@@ -26,8 +26,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
+
         $categories=Category::all();
-        return view('backend.admin.categories.subCategories.create',compact('categories'));
+        return view('backend.admin.categories.create',compact('categories'));
     }
 
     /**
@@ -50,7 +51,6 @@ class CategoryController extends Controller
         try {
           $data=[
               'category_name'=>$request->category_name,
-              'parent_id'=>$request->parent_id
           ];
 //    dd($data);
            $save= Category::create($data);
@@ -88,7 +88,7 @@ class CategoryController extends Controller
         $categories=Category::all();
        $category=Category::where('id',$id)->first();
 //       dd($category);
-         return view('backend.admin.categories.subCategories.edit',compact('category','categories'));
+         return view('backend.admin.categories.edit',compact('category','categories'));
     }
 
     /**

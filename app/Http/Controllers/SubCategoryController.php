@@ -17,7 +17,7 @@ class SubCategoryController extends Controller
     {
         $categories=SubCategory::all();
 
-        return view('backend.admin.categories.categories',compact('categories'));
+        return view('backend.admin.categories.subCategory.subCategories',compact('categories'));
     }
 
     /**
@@ -28,7 +28,7 @@ class SubCategoryController extends Controller
     public function create()
     {
         $categories=Category::all();
-        return view('backend.admin.categories.create',compact('categories'));
+        return view('backend.admin.categories.subCategory.create',compact('categories'));
     }
 
     /**
@@ -90,7 +90,7 @@ class SubCategoryController extends Controller
         $categories=Category::all();
         $category=SubCategory::where('id',$id)->first();
 //       dd($category);
-        return view('backend.admin.categories.edit',compact('category','categories'));
+        return view('backend.admin.categories.subCategory.edit',compact('category','categories'));
     }
 
     /**

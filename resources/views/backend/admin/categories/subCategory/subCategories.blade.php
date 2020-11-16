@@ -1,30 +1,30 @@
 @extends('backend.partial.app')
-@section('title','Category')
+@section('title','SubCategory')
 @section('main_section')
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="form-control-navbar badge badge-info">All Category</h5>
+                    <h5 class="form-control-navbar badge badge-info">All SubCategory</h5>
                     <table class="table table-striped table-hover">
                         <tr>
-                            <th>Category Name</th>
+                            <th>SubCategory Name</th>
                             <th>Parent Category</th>
                             <th>Action</th>
                         </tr>
 
-                            @foreach($categories as $data)
+                        @foreach($categories as $data)
 
 
-                                <tr>
+                            <tr>
 
-                            <td>{{$data->category_name}}</td>
+                                <td>{{$data->subcategory_name}}</td>
 
-                                    <td>
-{{--                                    @foreach ($data->parent() as $parents)--}}
-                                       {{$data->parent->category_name}}
-{{--                                    @endforeach--}}
-                                    </td>
+                                <td>
+                                    {{--                                    @foreach ($data->parent() as $parents)--}}
+                                    {{$data->parent->category_name}}
+                                    {{--                                    @endforeach--}}
+                                </td>
                                 <td>
                                     <a href="{{route('category.edit',$data->id)}}">
                                         <i class="fa fa-edit text-warning">Edit</i>
@@ -35,7 +35,7 @@
                                     </a>
                                 </td>
                             </tr>
-                                @endforeach
+                        @endforeach
 
                     </table>
                 </div>

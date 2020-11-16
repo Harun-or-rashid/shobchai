@@ -22,7 +22,7 @@
 
                                     <td>
 {{--                                    @foreach ($data->parent() as $parents)--}}
-                                       {{$data->parent->category_name}}
+                                       {{$data->category_name}}
 {{--                                    @endforeach--}}
                                     </td>
                                 <td>
