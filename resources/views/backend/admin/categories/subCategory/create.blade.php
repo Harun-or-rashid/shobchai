@@ -6,12 +6,12 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="form-control-navbar badge badge-info">Add Another SubCategory</h5>
-                    <form class="form-group category-create" id="category-create" name="category-create"  action="{{route('category.store')}}" method="post">
+                    <form class="form-group category-create" id="category-create" name="category-create"  action="{{route('subcategory.store')}}" method="post">
                         @include('backend.partial.session_messages')
                         @csrf
                         <div class="col-md-5">
                             <label class="col-form-label" for="category-name">SubCategory Name</label>
-                            <input class="form-control" type="text" name="category_name" id="category">
+                            <input class="form-control" type="text" name="subcategory_name" id="category">
                             <span class="text-danger">{{ $errors->first('subcategory_name') }}</span>
                         </div>
                         <div class="col-md-5">

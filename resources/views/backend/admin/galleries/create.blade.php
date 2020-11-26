@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="form-control-navbar badge badge-info">Upload Photo</h5>
-                <form class="form-group category-create" id="category-create" name="category-create"  action="{{route('category.store')}}" method="post">
+                <form class="form-group category-create" id="category-create" name="category-create" enctype="multipart/form-data"  action="{{route('category.store')}}" method="post">
                   @include('backend.partial.session_messages')
                     @csrf
 
@@ -19,15 +19,15 @@
                     <div class="col-md-5">
                         <label class="col-form-label" for="category-name">Image Title</label>
                         <input class="form-control" type="text" name="title" id="title">
-                        <span class="text-danger">{{ $errors->first('category') }}</span>
+                        <span class="text-danger">{{ $errors->first('title') }}</span>
                     </div>
-                    <div class="col-md-5">
-                        <label class="col-form-label" for="parent-name">Select Parent</label>
-                        <select class="form-control" name="parent_id" id="">
-                            <option value="1">Select Any..</option>
+{{--                    <div class="col-md-5">--}}
+{{--                        <label class="col-form-label" for="parent-name">Select Parent</label>--}}
+{{--                        <select class="form-control" name="parent_id" id="">--}}
+{{--                            <option value="1">Select Any..</option>--}}
 
-                        </select>
-                    </div>
+{{--                        </select>--}}
+{{--                    </div>--}}
 
                     <button class="btn btn-outline-info form-row mt-3" onclick="validateFm()" type="submit">Create</button>
 {{--                    <a class="btn btn-outline-info form-row mt-3" type="submit">Create</a>--}}

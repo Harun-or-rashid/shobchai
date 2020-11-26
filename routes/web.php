@@ -44,3 +44,11 @@ Route::group(['as'=>'gallery.','prefix'=>'gallery'],function (){
     Route::get('delete/{id}','GalleryController@destroy')->name('delete');
 });
 
+Route::group(['as'=>'variance.','prefix'=>'variance'],function (){
+    Route::get('/','VarianceController@index');
+    Route::get('create','VarianceController@create')->name('create');
+    Route::post('store','VarianceController@store')->name('store');
+    Route::get('edit/{id}','VarianceController@edit')->name('edit');
+    Route::post('update/{id}','VarianceControllerController@update')->name('update');
+    Route::get('delete/{id}','VarianceController@destroy')->name('delete');
+});

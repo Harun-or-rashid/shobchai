@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\SubCategory;
 use Illuminate\Http\Request;
+use Validator;
+
 
 class SubCategoryController extends Controller
 {
@@ -39,13 +41,11 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validation=  $this->validate($request,[
-            'subcategory_name'=>'subcategory_name',
+        $validation=$this->validate($request,[
+            'subcategory_name'=>'required'
 
         ]);
-//      dd($validation);
         if (!$validation){
-//          dd('ki');
             return redirect()->back()->withInput()->withErrors($validation);
         }
         try {
@@ -53,11 +53,10 @@ class SubCategoryController extends Controller
                 'subcategory_name'=>$request->subcategory_name,
                 'parent_id'=>$request->parent_id
             ];
-//    dd($data);
             $save= SubCategory::create($data);
-//           dd($save);
+           dd($save);
             session()->flash('type','success');
-            session()->flash('message','Category Added !');
+            session()->flash('message','SubCategory Added !');
             return redirect()->back();
 
         }catch (\Exception $error){

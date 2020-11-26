@@ -13,7 +13,8 @@ class VarianceController extends Controller
      */
     public function index()
     {
-        //
+
+        return view('backend.admin.variances.variances');
     }
 
     /**
@@ -23,7 +24,7 @@ class VarianceController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.admin.variances.create');
     }
 
     /**
