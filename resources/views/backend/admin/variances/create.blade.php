@@ -1,12 +1,12 @@
 @extends('backend.partial.app')
-@section('title','Category')
+@section('title','Variances')
 @section('main_section')
 <div class="row">
     <div class="col-md-5">
         <div class="card">
             <div class="card-body">
                 <h5 class="form-control-navbar badge badge-info">Add New Size</h5>
-                <form class="form-group category-create" id="size-create" name="size-create"  action="{{route('category.store')}}" method="post">
+                <form class="form-group size-create" id="size-create" name="size-create"  action="{{route('category.store')}}" method="post">
                   @include('backend.partial.session_messages')
                     @csrf
                     <div class="col-md-4">
@@ -30,11 +30,17 @@
                     @csrf
                     <div class="col-md-4">
                         <label class="col-form-label " for="category-name">Colour Name</label>
-                        <input class="form-control colorpicker" type="color" value="" name="colour_code" id="colorpicker">
+                        <input class="form-control colorpicker" type="text" name="colour_name" id="colourName">
                         <span class="text-danger">{{ $errors->first('colour_name') }}</span>
                     </div>
 
-                    <button class="btn btn-outline-info form-row mt-3" onclick="validateFm()" type="submit">Create</button>
+                    <div class="col-md-4">
+                        <label class="col-form-label " for="category-name">Selecting for Hex Code</label>
+                        <input class="form-control colorpicker" type="color" name="colour_code" id="colourCode">
+                        <span class="text-danger">{{ $errors->first('colour_name') }}</span>
+                    </div>
+
+                    <button class="btn btn-outline-info form-row mt-3" onclick="validateFmc()" type="submit">Create</button>
                     {{--                    <a class="btn btn-outline-info form-row mt-3" type="submit">Create</a>--}}
                 </form>
             </div>
@@ -49,22 +55,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
 
 <script>
+    const formSize=document.getElementById('size-create');
+    const formColour=document.getElementById('colour-create');
+    const colourCode=document.getElementById('colourCode');
+
+    formColour.addEventListener('submit',function (e) {
+        e.preventDefault();
+console.log(colourCode.value)
+    })
+    formSize.addEventListener('submit',function (e) {
+        e.preventDefault();
+console.log("prevented by default")
+    })
 
         function validateFm(){
-            $(".category-create").validate({
+            $(".size-create").validate({
                 rules: {
-                    category: "required",
+                    size_title: "required",
                     // parent: "required",
 
                 },
                 messages:{
-                    category: "required",
+                    size_title: "required",
                     // parent: "required",
 
                 }
             });
 
         }
+        function validateFmc(){
+            $(".colour-create").validate({
+                rules: {
+                    colour_name: "required",
+                    // parent: "required",
+
+                },
+                messages:{
+                    colour_name: "required",
+                    // parent: "required",
+
+                }
+            });
+
+        }
+
+
 
     $('.colorpicker').colorpicker();
 </script>
