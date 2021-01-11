@@ -42,12 +42,12 @@
         function validateFm(){
             $(".category-create").validate({
                 rules: {
-                    category: "required",
+                    name: "required",
                     // parent: "required",
 
                 },
                 messages:{
-                    category: "required",
+                    name: "required",
                     // parent: "required",
 
                 }
